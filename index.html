@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="catalog/index.css"> -->
+	<!-- <link rel="stylesheet" href="index.css"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="img/degan.ico" type="image/x-icon">
+	<script id="chatBroEmbedCode">/* Chatbro Widget Embed Code Start */function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}/* Chatbro Widget Embed Code End */ChatbroLoader({encodedChatId: '16z52'});</script>
+	<title>Degani</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		a{
+			text-decoration: none;
+		}
+		
+		li{
+			list-style: none;
+		}
+		
+		.write{
+			background: url(./img/write.png) center center no-repeat;
+			position: fixed;
+			bottom: 2%;
+		    z-index: 5;
+		    right: 1%;
+		    width: 39px;
+		    height: 38px;
+		    display: none;
+		}
+		
+		.burger{
+			display: none;
+			background: url(./img/burger.png) center center no-repeat;
+			width: 29px;
+			height: 29px;
+			position: absolute;
+		    right: 5%;
+		    top: 3%;
+		}
+		
+		.burger_menu{
+			position: absolute;
+		    padding: 5px;
+		    width: 140px;
+		    right: 10%;
+		    margin-top: 10px;
+		    background: white;
+		    border: 1px solid #ccc;
+		    z-index: 10;
+		    display: none;
+		}
+		
+		.burger_menu_items{
+			text-align: center;
+			padding: 5px 0;
+		}
+		
+		.burger_menu_items a{
+			font-size: 28px;
+			color: #684726;
+			font-family: 'Roboto';
+			font-weight: bold;
+		}
+		
+		.header{
+			margin-top: 20px;
+		}
+		
+		.header .social_networks_for_mobile{
+			visibility: hidden;
+			min-width: 200px;
+			display: flex;
+		    position: absolute;
+		    bottom: 2%;
+		    left: 2%;
+		}
+		
+		.header .social_networks_for_mobile .inst_mobile ,
+		.face_mobile , .yout_mobile , .mess_mobile{
+			width: 40px;
+			height: 40px;
+			margin-right: 10px;
+		}
+		
+		.container{
+			display: flex;
+			flex-direction: column;
+			position: relative;
+		}
+		
+		.menu{
+			display: flex;
+		    justify-content: space-between;
+		    min-width: 1024px;
+		    margin: 0 auto;
+		    margin-bottom: 15px;
+		}
+		
+		.logo{
+			display: flex;
+			align-items: center;
+		}
+		
+		.logo img{
+			height: 64px;
+			width: 64px;
+		}
+		
+		.logo h1{
+			font-family: 'Roboto';
+			font-size: 40px;
+			color: #684726;
+		}
+		
+		.nav{
+			display: flex;
+			align-items: center;
+			min-width: 200px;
+		    justify-content: space-between;
+		}
+		
+		.nav p{
+			font-family: 'Roboto';
+		    font-size: 20px;
+		    color: #5a5a5a;
+		}
+		
+		.nav a{
+			font-family: 'Roboto';
+		    font-size: 20px;
+		    color: #5a5a5a;
+		}
+		
+		.main{
+		    min-width: 1124px;
+		    height: 540px;
+		    margin: 0 auto;
+		    background: url(./img/bg.png);
+		    position: relative;
+		    margin-bottom: 50px;
+		}
+		
+		.headline{
+			display: flex;
+		    position: absolute;
+		    right: 5%;
+		    top: 6%;
+		    
+		}
+		
+		.headline img{
+			margin-right: 10px;
+		}
+		
+		.headline p{
+			font-family: 'Roboto';
+		    font-size: 22px;
+		    color: #fff;
+		}
+		
+		.community{
+			position: absolute;
+		    right: 3%;
+		    top: 40%;
+		}
+		
+		.community span{
+			font-family: 'Roboto';
+		    font-size: 40px;
+		    color: #fff;
+		}
+		
+		.community p{
+			font-family: 'Roboto';
+		    font-size: 18px;
+		    color: #fff;
+		    margin-bottom: 30px;
+		}
+		
+		.button img{
+		    padding: 8px 10px;
+		    background: #259d8e;
+		}
+		
+		.button a{
+			font-family: 'Roboto';
+		    font-size: 20px;
+		    color: #fff;
+		    padding: 10.7px 25px;
+		    background: #259d8e;
+		    position: absolute;
+		}
+		
+		.button a:hover{
+			background: #54d3c3;
+		}
+		
+		.discord{
+		    min-width: 1024px;
+		    margin: 0 auto;
+		    display: flex;
+		    flex-direction: column;
+		    text-align: center;
+		    margin-bottom: 100px;
+		}
+		
+		.discord h2{
+			font-family: 'Roboto';
+		    font-size: 40px;
+		    color: #636363;
+		    margin-bottom: 20px;
+		}
+		
+		.discord p{
+			font-family: 'Roboto';
+		    font-size: 24px;
+		    color: #9f9f9f;
+		    margin-bottom: 70px;
+		}
+		
+		.online{
+			display: flex;
+			margin: 0 auto;
+		}
+		
+		.lines{
+			display: flex;
+		    flex-direction: column;
+		    padding-top: 67px;
+		    margin-left: 55px;
+		}
+		
+		.lines img{
+			margin-bottom: 64px;
+		}
+		
+		.forum{
+			min-width: 1024px;
+		    margin: 0 auto;
+		    margin-bottom: 100px;
+		}
+		
+		.forum h2{
+			text-align: center;
+			font-family: 'Roboto';
+		    font-size: 40px;
+		    color: #636363;
+		    margin-bottom: 30px;
+		}
+		
+		.main_footer{
+			min-width: 1024px;
+		    margin: 0 auto;
+		}
+		
+		.main_footer p{
+			text-align: center;
+			font-family: 'Roboto';
+		    font-size: 24px;
+		    color: #989898;
+		    margin-bottom: 40px;
+		    margin-top: 40px;
+		}
+		
+		.feedback{
+			display: flex;
+			justify-content: space-around;
+		}
+		
+		.social_networks{
+			max-width: 50px;
+		    display: flex;
+		    flex-direction: column;
+		    max-height: 230px;
+		    margin-top: 65px;
+		}
+		
+		.social_networks .soc_net{
+			margin-bottom: 10px;
+			width: 55px;
+			height: 47px;
+		}
+		
+		.inst_mobile{
+			background: url(./img/inst_mobile.png) center center no-repeat;
+		}
+		
+		.face_mobile{
+			background: url(./img/face_mobile.png) center center no-repeat;
+		}
+		
+		.yout_mobile{
+			background: url(./img/yout_mobile.png) center center no-repeat;
+		}
+		
+		.mess_mobile{
+			background: url(./img/mess_mobile.png) center center no-repeat;
+		}
+		
+		.inst{
+			background: url(./img/instagram.png) center center no-repeat;
+		}
+		
+		.face{
+			background: url(./img/facebook.png) center center no-repeat;
+		}
+		
+		.yout{
+			background: url(./img/youtube.png) center center no-repeat;
+		}
+		
+		.mess{
+			background: url(./img/messages.png) center center no-repeat;
+		}
+		
+		.comments p{
+			font-family: 'Roboto';
+		    font-size: 22px;
+			color: #ff00ff;
+			margin-bottom: -8px;
+		}
+		
+		.comments input{
+			font-family: 'Roboto';
+		    font-size: 22px;
+			color: #ff00ff;
+			padding: 2px;
+		    width: 700px;
+		}
+		
+		.comments input[type="text"]::placeholder { 
+			color: #ff00ff; 
+		} 
+		
+		.comments button{
+			font-family: 'Roboto';
+		    font-size: 14px;
+			color: #fff;
+			background: #54d3c3;
+		    border: 1px solid transparent;
+		    padding: 6px 40.5px;
+		}
+		
+		@media screen and ( max-width: 1124px){
+			.main{
+				min-width: 1024px;
+			}
+		
+			.menu{
+				min-width: 950px;
+				margin-left: 30px;
+			}
+		
+			.community{
+				right: 0%;
+			}
+		}
+		
+		@media screen and ( max-height: 610px){
+			.main , .menu{
+				max-height: 400px;
+			}
+		}
+		
+		@media screen and ( max-width: 415px){
+			.container{
+				position: unset;
+			}
+		
+			.header{
+				margin-top: 0;
+			}
+		
+			.header .social_networks_for_mobile{
+				visibility: visible;
+			}	
+		
+			iframe{
+				width: 410px;
+			}
+		
+			.burger:hover .burger_menu{
+				display: block;
+			}
+		
+			.write{
+				position: absolute;
+			}
+		
+			.main , .menu{
+				background: none;
+				min-width: 411px;
+				margin-left: 0;
+				margin-bottom: 0;
+			}
+		
+			.menu .logo h1{
+				font-size: 34px;
+			}
+		
+			.menu .nav{
+				display: none;
+			}
+		
+			.burger{
+				display: block;
+			}
+		
+			.main .headline{
+				display: none;
+			}
+
+			.main .community{
+				right: 3%;
+			}
+		
+			.main .community span{
+				font-size: 34px;
+			}
+		
+			.main .community .button{
+				margin-left: 33%;
+			}
+		
+			.main .community span , .main .community p{
+				color: #684726;
+			}
+		
+			.About_first{
+				display: none;
+			}
+		
+			.About_second{
+				display: none;
+			}
+		
+			.footer{
+				display: none;
+			}
+		}
+		
+		@media screen and ( max-width: 380px){
+			iframe{
+				width: 380px;
+			}
+
+			.main .community{
+				right: 6%;
+			}
+		
+			.main , .menu{
+				min-width: 370px;
+			}
+		
+			.burger{
+				top: 2%;
+			}
+		
+			.menu .logo h1{
+				font-size: 34px;
+			}
+		
+			.main .community span{
+				font-size: 29px;
+			}
+		
+			.main .community .button {
+		    	margin-left: 25%;
+			}
+		}
+		
+		@media screen and ( max-width: 375px){
+			iframe{
+				width: 375px;
+			}
+		}
+		
+		@media screen and ( max-width: 360px){
+			iframe{
+				width: 360px;
+			}
+		
+			.main , .menu{
+				min-width: 340px;
+			}
+		
+			.menu .logo h1{
+				font-size: 28px;
+			}
+		
+			.main .community span{
+				font-size: 25px;
+			}
+		
+			.main .community p{
+				font-size: 17px;
+			}
+		
+			.main .community .button {
+		    	margin-left: 23%;
+			}
+		}
+		
+		@media screen and ( max-width: 320px){
+			.main , .menu{
+				min-width: 320px;
+			}
+		
+			.main .community span {
+		    	font-size: 23px;
+			}
+		
+			iframe{
+				width: 320px;
+			}
+		
+			.main .community .button {
+		    	margin-left: 20%;
+			}
+		}
+		
+		@media screen and ( max-width: 300px){
+			iframe{
+				width: 280px;
+			}
+		
+			.main , .menu{
+				min-width: 280px;
+			}
+		
+			.logo img {
+		    	height: 56px;
+		    	width: 56px;
+			}
+		
+			.menu .logo h1{
+				font-size: 24px;
+			}
+		
+			.main .community span{
+				font-size: 21px;
+			}
+		
+			.main .community p{
+				font-size: 15px;
+			}
+		
+			.main .community .button {
+		    	margin-left: 19%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="header" id="header">
+		<div class="container">
+			<!-- <a href="https://www.chatbro.com/en/16z52/" class="write">
+				</a> -->
+			<div class="menu">
+				<div class="logo">
+					<img src="img/logo.gif" alt="logo">
+					<h1>Degani (official)</h1>
+				</div>
+				<div class="burger">
+					<div class="burger_menu">
+						<ul>
+							<li class="burger_menu_items"><a href="index.html">Главная</a></li>
+							<li class="burger_menu_items"><a href="discord.html">Дискорд</a></li>
+							<!-- <li class="burger_menu_items"><a href="">Форум</a></li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="nav">
+					<a href="#header">Главная</a>
+					<p>|</p>
+					<a href="#discord">Дискорд</a>
+					<!-- <p>|</p>
+					<a href="#forum">Форум</a> -->
+				</div>
+			</div>
+			<div class="main">
+				<div class="headline">
+					<img src="img/earth.png" alt="earth">
+					<p>ПОГРУЗИСЬ В МИР <br> ПОКА ОН НЕ ПОГРУЗИЛСЯ В ТЕБЯ</p>
+				</div>
+				<div class="community">
+					<span>ИГРОВОЕ СООБЩЕСТВО</span>
+					<p>просто заходи, просто не выходи</p>
+					<div class="button">
+						<img src="img/mini_logo.png" alt="mini_logo">
+						<a href="https://www.donationalerts.com/r/degani">Донат</a>
+					</div>
+				</div>
+			</div>
+			<div class="social_networks_for_mobile">
+				<a class="soc_net_mobile inst_mobile" href="https://www.instagram.com/degani.memes/"></a>
+				<a class="soc_net_mobile face_mobile" href="https://www.facebook.com/profile.php?id=100010031105856"></a>
+				<a class="soc_net_mobile yout_mobile" href="https://www.youtube.com/channel/UCJPxH-CbZwuiCbHurbR-YOw?view_as=subscriber"></a>
+				<a class="soc_net_mobile mess_mobile" href=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="About_first">
+		<div class="container">
+			<div class="discord" id="discord">
+				<h2>Discord</h2>
+		        <p>проприетарный бесплатный мессенджер с поддержкой VoIP, видеоконференций, <br> предназначенный для использования различными сообществами по интересам, <br> наиболее популярен у геймеров и учащихся.</p>
+		        <div class="online">
+		        	<iframe src="https://discordapp.com/widget?id=664131308578013184&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+		        	<div class="lines">
+		        		<img src="img/line.png" alt="line">
+		        		<img src="img/line.png" alt="line">
+		        		<img src="img/line.png" alt="line">
+                        <img src="img/line.png" alt="line">
+                        <img src="img/line.png" alt="line">
+                        <img src="img/line.png" alt="line">
+		        	</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="About_second">
+		<div class="container">
+			<div class="forum" id="forum">
+				<h2>Форум</h2>
+				<div class="feedback">
+					<div class="social_networks">
+						<a class="soc_net_for inst"href="https://www.instagram.com/degani.memes/"></a>
+						<a class="soc_net face" href="https://www.facebook.com/profile.php?id=100010031105856"></a>
+						<a class="soc_net yout" href="https://www.youtube.com/channel/UCJPxH-CbZwuiCbHurbR-YOw?view_as=subscriber"></a>
+						<a class="soc_net mess" href=""></a>
+					</div>
+					<div class="comments">
+						<p>Коментарий <Br> 
+							<textarea name="comment" cols="120" rows="18"></textarea>
+						</p>
+						<input type="text" placeholder="Имя*">
+						<button>Отправить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<div class="footer">
+		<div class="container">
+			<div class="main_footer">
+				<hr>
+			    <p>Copyright © 2020 Degani G/L/H/F</p>
+			</div>
+		</div>
+	</div>			
+</body>
+</html>
